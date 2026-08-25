@@ -1,34 +1,53 @@
-a# Sonal Talukdar — Portfolio
+# 🌐 Sonal Talukdar — Portfolio
 
-Personal portfolio website with an integrated AI chat assistant ("SonalAI") that answers visitor
-questions in first person, as Sonal, using live project/education/skill data.
+Personal portfolio website featuring **SonalAI** — an integrated AI chat assistant that speaks
+in first person as Sonal, answering visitor questions about projects, education, and skills using
+grounded, factual data (no hallucinations).
 
-**Live site:** https://sonal-talukdar-portfolio-frontend.onrender.com
-**Backend API:** https://sonal-talukdar-portfolio-backend.onrender.com
-
----
-
-## Tech Stack
-
-**Frontend**
-- React + Vite
-- Tailwind CSS
-- Framer Motion (animations)
-- Axios (API calls)
-- react-icons / lucide-react
-
-**Backend**
-- FastAPI (Python)
-- MongoDB (via Motor/PyMongo) — stores feedback submissions
-- Groq API (LLaMA 3.3 70B) — powers the SonalAI chat assistant
-- Email (SMTP) — feedback notification emails
-
-**Deployment**
-- Render (Web Service for backend, Static Site for frontend)
+🔗 **Live Site:** [sonal-talukdar-portfolio-frontend.onrender.com](https://sonal-talukdar-portfolio-frontend.onrender.com)
+⚙️ **Backend API:** [sonal-talukdar-portfolio-backend.onrender.com](https://sonal-talukdar-portfolio-backend.onrender.com)
 
 ---
 
-## Project Structure
+## ✨ Features
+
+- 🎨 Fully responsive, animated single-page portfolio — Home, Education, Projects, Tech Stack,
+  Certificates, Additional Skills, Feedback, Footer
+- 🤖 **SonalAI Chat Widget** — talks in first person as Sonal, understands English, Bengali, and
+  Banglish (Bengali written in Roman letters)
+- 📄 One-click resume download, straight from chat or the hero section
+- 📬 Feedback form that saves submissions to MongoDB and sends a confirmation email
+- 🚀 Deployed on Render with auto-deploy on every push
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+| Tech | Purpose |
+|---|---|
+| ⚛️ React + Vite | UI framework & build tool |
+| 🎨 Tailwind CSS | Styling |
+| 🎬 Framer Motion | Animations |
+| 🔌 Axios | API requests |
+| 🧩 react-icons / lucide-react | Icons |
+
+### Backend
+| Tech | Purpose |
+|---|---|
+| 🐍 FastAPI | REST API framework |
+| 🍃 MongoDB (Motor/PyMongo) | Stores feedback submissions |
+| 🧠 Groq API (LLaMA 3.3 70B) | Powers the SonalAI chat assistant |
+| ✉️ SMTP (Gmail) | Feedback confirmation emails |
+
+### Deployment
+| Service | Type |
+|---|---|
+| Render | Web Service (backend) + Static Site (frontend) |
+
+---
+
+## 📁 Project Structure
 
 ```
 Sonal Talukdar Portfolio/
@@ -38,16 +57,16 @@ Sonal Talukdar Portfolio/
 │   ├── models.py            # Pydantic models
 │   ├── routes/
 │   │   ├── chat.py          # SonalAI chat endpoint (Groq)
-│   │   ├── feedback.py      # Feedback form -> MongoDB + email
+│   │   ├── feedback.py      # Feedback form to MongoDB + email
 │   │   └── resume.py        # Resume PDF download endpoint
 │   ├── requirements.txt
 │   └── .env                 # Local secrets (never committed)
 │
 └── frontend/
     ├── src/
-    │   ├── components/      # Home, Projects, Education, Footer, Navbar,
-    │   │                       SonalAI, TechStack, Certificates, Feedback,
-    │   │                       AdditionalSkills, AnimatedBackground
+    │   ├── components/       # Home, Projects, Education, Footer, Navbar,
+    │   │                        SonalAI, TechStack, Certificates, Feedback,
+    │   │                        AdditionalSkills, AnimatedBackground
     │   ├── data/
     │   │   └── PortfolioData.js   # Central content (profile, projects, education, etc.)
     │   ├── App.jsx
@@ -58,9 +77,9 @@ Sonal Talukdar Portfolio/
 
 ---
 
-## Local Setup
+## 🚀 Local Setup
 
-### Backend
+### 1️⃣ Backend
 
 ```bash
 cd backend
@@ -72,11 +91,11 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Backend runs at `http://localhost:8000`.
+Runs at `http://localhost:8000`.
 
-Create a `backend/.env` file (see `.env.example`) with:
+Create `backend/.env`:
 
-```
+```env
 MONGODB_URI=
 DB_NAME=
 GROQ_API_KEY=
@@ -85,7 +104,7 @@ EMAIL_USER=
 EMAIL_PASS=
 ```
 
-### Frontend
+### 2️⃣ Frontend
 
 ```bash
 cd frontend
@@ -93,48 +112,43 @@ npm install
 npm run dev
 ```
 
-Frontend runs at `http://localhost:5173`.
+Runs at `http://localhost:5173`.
 
-Create a `frontend/.env` file with:
+Create `frontend/.env`:
 
-```
+```env
 VITE_API_BASE_URL=http://localhost:8000
 ```
 
 ---
 
-## Deployment (Render)
+## ☁️ Deployment (Render)
 
 **Backend — Web Service**
-- Root Directory: `backend`
-- Build Command: `pip install -r requirements.txt`
-- Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-- Environment variables: same keys as `backend/.env` above
+- 📂 Root Directory: `backend`
+- 🔨 Build Command: `pip install -r requirements.txt`
+- ▶️ Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+- 🔑 Environment variables: same keys as `backend/.env` above
 
 **Frontend — Static Site**
-- Root Directory: `frontend`
-- Build Command: `npm install && npm run build`
-- Publish Directory: `dist`
-- Environment variable: `VITE_API_BASE_URL` = backend's live Render URL
+- 📂 Root Directory: `frontend`
+- 🔨 Build Command: `npm install && npm run build`
+- 📦 Publish Directory: `dist`
+- 🔑 Environment variable: `VITE_API_BASE_URL` → backend's live Render URL
 
-⚠️ After deploying the frontend, update the backend's `FRONTEND_ORIGIN` environment variable to
-the live frontend URL (not `localhost`) to avoid CORS errors.
-
----
-
-## Features
-
-- Fully responsive, animated single-page portfolio (Home, Education, Projects, Tech Stack,
-  Certificates, Additional Skills, Feedback, Footer)
-- **SonalAI** chat widget — speaks in first person as Sonal, answers questions about projects,
-  education, and skills using grounded facts (no hallucinated details), matches the visitor's
-  language/script (English, Bengali, or Banglish)
-- Resume download directly from chat or hero section
-- Feedback form that stores submissions in MongoDB and sends a confirmation email
+> ⚠️ After deploying the frontend, update the backend's `FRONTEND_ORIGIN` environment variable to
+> the live frontend URL (not `localhost`) to avoid CORS errors.
 
 ---
 
-## Notes
+## 🔒 Security Notes
 
-- `.env` files are git-ignored and must be configured manually in each environment (local + Render)
-- Never commit real API keys/passwords — rotate any credential that is ever exposed
+- `.env` files are git-ignored and must be configured manually in each environment
+- Never commit real API keys or passwords — rotate any credential that is ever exposed publicly
+
+---
+
+## 👩‍💻 Author
+
+**Sonal Talukdar** — Aspiring AI Full Stack Engineer
+📧 sonaltalukdar29@gmail.com
