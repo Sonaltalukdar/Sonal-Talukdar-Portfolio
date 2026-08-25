@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import { projects } from '../data/PortfolioData'
 
-function ProjectCard({ p }) {
+function ProjectCard({ p, index }) {
   const cardRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -27,6 +27,7 @@ function ProjectCard({ p }) {
       className={`group relative w-full max-w-xl transition-all duration-700 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
+      style={{ transitionDelay: isVisible ? `${index * 200}ms` : '0ms' }}
     >
       {/* glow — same cyan glow style as the Home code card, toned down */}
       <div
@@ -155,8 +156,8 @@ export default function Projects() {
       </h2>
 
       <div className="mt-10 flex flex-wrap justify-center gap-8 sm:mt-14">
-        {projects.map((p) => (
-          <ProjectCard key={p.title} p={p} />
+        {projects.map((p, i) => (
+          <ProjectCard key={p.title} p={p} index={i} />
         ))}
       </div>
     </section>
