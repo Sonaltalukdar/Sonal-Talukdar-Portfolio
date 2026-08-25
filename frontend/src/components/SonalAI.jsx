@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMessageSquare, FiX, FiSend, FiUser } from 'react-icons/fi'
+import { FiMessageSquare, FiX, FiSend, FiUser, FiDownload } from 'react-icons/fi'
 import axios from 'axios'
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
@@ -179,7 +179,17 @@ export default function SonalAI() {
                         : undefined
                     }
                   >
-                    {m.content}
+                    {m.content.replace('[[RESUME_LINK]]', '').trim()}
+                    {m.content.includes('[[RESUME_LINK]]') && (
+                      <a
+                        href={`${API_BASE}/api/resume`}
+                        download
+                        className="mt-3 flex items-center justify-center gap-2 rounded-xl border border-cyan-300/40 bg-cyan-300/10 px-3.5 py-2 text-sm font-medium text-cyan-200 transition-colors hover:bg-cyan-300/20"
+                      >
+                        <FiDownload size={14} />
+                        Download Resume (PDF)
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}

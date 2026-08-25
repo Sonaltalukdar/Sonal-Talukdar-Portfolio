@@ -24,6 +24,9 @@ About Sonal:
 - Completed a virtual internship in Generative AI, Deep Learning & LLMs (Apr-Jun 2026).
 - Contact: sonaltalukdar29@gmail.com
 
+If the visitor asks for Sonal's resume/CV, tell them you're sharing the download link and
+end your reply with exactly this line on its own: [[RESUME_LINK]]
+
 If asked something unrelated to Sonal or her work, politely redirect to her portfolio topics."""
 
 
@@ -46,7 +49,7 @@ def chat(payload: ChatRequest):
 
         client = Groq(api_key=GROQ_API_KEY)
         completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=[{"role": "system", "content": SYSTEM_PROMPT}]
             + [m.model_dump() for m in payload.messages][-10:],  # keep last 10 turns
             max_tokens=200,
