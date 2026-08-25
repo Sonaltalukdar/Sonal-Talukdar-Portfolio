@@ -1,11 +1,14 @@
 # 🌐 Sonal Talukdar — Portfolio
 
-Personal portfolio website featuring **SonalAI** — an integrated AI chat assistant that speaks
-in first person as Sonal, answering visitor questions about projects, education, and skills using
-grounded, factual data (no hallucinations).
+Personal portfolio website featuring an integrated chat assistant that speaks in first person as
+Sonal, answering visitor questions about projects, education, and skills using grounded, factual
+data (no hallucinations).
 
-🔗 **Live Site:** [sonal-talukdar-portfolio-frontend.onrender.com](https://sonal-talukdar-portfolio-frontend.onrender.com)
-⚙️ **Backend API:** [sonal-talukdar-portfolio-backend.onrender.com](https://sonal-talukdar-portfolio-backend.onrender.com)
+🔗 **Live Site:**
+[sonal-talukdar-portfolio-frontend.onrender.com](https://sonal-talukdar-portfolio-frontend.onrender.com)
+
+⚙️ **Backend API:**
+[sonal-talukdar-portfolio-backend.onrender.com](https://sonal-talukdar-portfolio-backend.onrender.com)
 
 ---
 
@@ -13,7 +16,7 @@ grounded, factual data (no hallucinations).
 
 - 🎨 Fully responsive, animated single-page portfolio — Home, Education, Projects, Tech Stack,
   Certificates, Additional Skills, Feedback, Footer
-- 🤖 **SonalAI Chat Widget** — talks in first person as Sonal, understands English, Bengali, and
+- 🤖 **Chat Widget** — talks in first person as Sonal, understands English, Bengali, and
   Banglish (Bengali written in Roman letters)
 - 📄 One-click resume download, straight from chat or the hero section
 - 📬 Feedback form that saves submissions to MongoDB and sends a confirmation email
@@ -37,7 +40,7 @@ grounded, factual data (no hallucinations).
 |---|---|
 | 🐍 FastAPI | REST API framework |
 | 🍃 MongoDB (Motor/PyMongo) | Stores feedback submissions |
-| 🧠 Groq API (LLaMA 3.3 70B) | Powers the SonalAI chat assistant |
+| 🧠 Groq API (LLaMA 3.3 70B) | Powers the chat assistant |
 | ✉️ SMTP (Gmail) | Feedback confirmation emails |
 
 ### Deployment
@@ -56,7 +59,7 @@ Sonal Talukdar Portfolio/
 │   ├── database.py          # MongoDB connection
 │   ├── models.py            # Pydantic models
 │   ├── routes/
-│   │   ├── chat.py          # SonalAI chat endpoint (Groq)
+│   │   ├── chat.py          # Chat endpoint (Groq)
 │   │   ├── feedback.py      # Feedback form to MongoDB + email
 │   │   └── resume.py        # Resume PDF download endpoint
 │   ├── requirements.txt
@@ -150,5 +153,5 @@ VITE_API_BASE_URL=http://localhost:8000
 
 ## 👩‍💻 Author
 
-**Sonal Talukdar** — Aspiring AI Full Stack Engineer
+**Sonal Talukdar** — Aspiring Full Stack Engineer
 📧 sonaltalukdar29@gmail.com
