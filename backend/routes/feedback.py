@@ -2,7 +2,7 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime
-from fastapi import APIRouter
+from fastapi import APIRouter, BackgroundTasks
 
 from database import feedback_collection
 from models import FeedbackCreate, FeedbackOut
@@ -64,7 +64,8 @@ def send_email_notification(name: str, email: str, message: str) -> None:
         msg["From"] = EMAIL_USER
         msg["To"] = EMAIL_USER
 
-        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+        # timeout=10 added — connection will fail fast instead of hanging forever
+        with smtplib.SMTP("smtp.gmail.com", 587, timeout=10) as server:
             server.starttls()
             server.login(EMAIL_USER, EMAIL_PASS)
             server.sendmail(EMAIL_USER, [EMAIL_USER], msg.as_string())
@@ -84,7 +85,7 @@ def serialize(doc) -> dict:
 
 
 @router.post("", response_model=FeedbackOut)
-def create_feedback(payload: FeedbackCreate):
+def create_feedback(payload: FeedbackCreate, background_tasks: BackgroundTasks):
     ai_reply = generate_ai_reply(payload.message)
     doc = {
         "name": payload.name,
@@ -96,7 +97,8 @@ def create_feedback(payload: FeedbackCreate):
     result = feedback_collection.insert_one(doc)
     doc["_id"] = result.inserted_id
 
-    send_email_notification(payload.name, payload.email, payload.message)
+    # email is now sent in the background — the response no longer waits for it
+    background_tasks.add_task(send_email_notification, payload.name, payload.email, payload.message)
 
     return serialize(doc)
 
