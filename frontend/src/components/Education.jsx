@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { GraduationCap, FileText, BookOpen } from 'lucide-react'
-import { education } from '../data/portfolioData'
+import { education } from '../data/PortfolioData'
 
 const icons = [GraduationCap, FileText, BookOpen]
 

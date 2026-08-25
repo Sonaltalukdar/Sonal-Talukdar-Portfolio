@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
-import { projects } from '../data/portfolioData'
+import { projects } from '../data/PortfolioData'
 
 function ProjectCard({ p }) {
   const cardRef = useRef(null)

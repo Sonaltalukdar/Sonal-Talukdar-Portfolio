@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Download, ArrowRight } from 'lucide-react'
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
-import { profile } from '../data/portfolioData'
+import { profile } from '../data/PortfolioData'
 
 const codeLines = [
   'class Engineer:',

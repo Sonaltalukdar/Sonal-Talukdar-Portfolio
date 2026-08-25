@@ -1,5 +1,5 @@
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
-import { profile } from '../data/portfolioData'
+import { profile } from '../data/PortfolioData'
 
 const links = [
   { label: 'Home', href: '#home' },
