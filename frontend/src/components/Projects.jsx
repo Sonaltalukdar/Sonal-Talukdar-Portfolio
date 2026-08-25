@@ -28,14 +28,14 @@ function ProjectCard({ p }) {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      {/* glow — same cyan glow style as the Home code card */}
+      {/* glow — same cyan glow style as the Home code card, toned down */}
       <div
-        className="absolute -inset-6 rounded-[2rem] opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-100"
-        style={{ background: 'rgba(34, 229, 255, 0.22)' }}
+        className="absolute -inset-6 rounded-[2rem] opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-60"
+        style={{ background: 'rgba(34, 229, 255, 0.12)' }}
       />
       <div
-        className="absolute -inset-2 rounded-2xl opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-90"
-        style={{ background: 'rgba(34, 229, 255, 0.3)' }}
+        className="absolute -inset-2 rounded-2xl opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-50"
+        style={{ background: 'rgba(34, 229, 255, 0.15)' }}
       />
 
       {/* actual card — solid dark background so the glow can't show through the content area */}
