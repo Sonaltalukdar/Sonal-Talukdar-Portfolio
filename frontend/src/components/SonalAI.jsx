@@ -7,7 +7,7 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
 
 const WELCOME = {
   role: 'assistant',
-  content: "Hi! I'm SonalAI — ask me about Sonal's projects, tech stack, or experience.",
+  content: "Hey, I'm Sonal! Ask me anything about my projects, my tech stack, or my experience.",
 }
 
 export default function SonalAI() {
@@ -139,11 +139,11 @@ export default function SonalAI() {
                   className="text-sm font-semibold uppercase tracking-widest text-cyan-300"
                   style={{ fontFamily: "'Orbitron', sans-serif" }}
                 >
-                  SonalAI
+                  Sonal Talukdar
                 </p>
                 <span className="mt-0.5 flex items-center gap-1.5 text-[11px] text-white/40">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                  Ask about Sonal
+                  Online now
                 </span>
               </div>
             </div>
@@ -225,7 +225,7 @@ export default function SonalAI() {
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask SonalAI something..."
+                placeholder="Ask me something..."
                 className="flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white outline-none transition-colors placeholder:text-white/30 focus:border-cyan-300/60"
               />
               <button
