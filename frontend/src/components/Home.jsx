@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { Download, ArrowRight } from 'lucide-react'
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { profile } from '../data/portfolioData'
@@ -25,28 +25,6 @@ export default function Home() {
   const [codeDone, setCodeDone] = useState(false)
   const [output, setOutput] = useState([])
   const [runId, setRunId] = useState(0)
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-
-  const cardRef = useRef(null)
-
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return
-
-    const rect = cardRef.current.getBoundingClientRect()
-
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-
-    setTilt({ x, y })
-  }
-
-  const handleMouseEnter = () => setIsHovering(true)
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 })
-    setIsHovering(false)
-  }
 
   useEffect(() => {
     setTyped([])
@@ -122,9 +100,6 @@ export default function Home() {
   }, [codeDone, runId])
 
   const replay = () => setRunId((id) => id + 1)
-
-  const glowOpacity = isHovering ? 0.65 : 0.22
-  const glowSpread = isHovering ? 70 : 40
 
   return (
     <section
@@ -211,30 +186,33 @@ export default function Home() {
           }
         }
 
-        @keyframes cardFloat {
-          0% {
-            transform: rotateX(0deg) rotateY(0deg);
-          }
-          25% {
-            transform: rotateX(3deg) rotateY(-4deg);
-          }
-          50% {
-            transform: rotateX(0deg) rotateY(0deg);
-          }
-          75% {
-            transform: rotateX(-2.5deg) rotateY(4deg);
-          }
-          100% {
-            transform: rotateX(0deg) rotateY(0deg);
-          }
-        }
-
         .hero-card-entrance {
           opacity: 0;
           transform-style: preserve-3d;
-          animation:
-            cardEntrance 1.1s cubic-bezier(.16,1,.3,1) .25s forwards,
-            cardFloat 6.5s ease-in-out 1.35s infinite;
+          animation: cardEntrance 1.1s cubic-bezier(.16,1,.3,1) .25s forwards;
+        }
+
+        /* Continuous smooth up-down float — always running, automatic.
+           Rotation/tilt is intentionally NOT part of this animation; that
+           only happens on hover via the JS mouse-tilt logic below, so it
+           never fights with this transform. Keeps running forever
+           (including right after a refresh). */
+        @keyframes cardFloatY {
+          0% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-16px);
+          }
+          100% {
+            transform: translateY(0px);
+          }
+        }
+
+        .hero-card-float {
+          transform-style: preserve-3d;
+          animation: cardFloatY 3.2s ease-in-out infinite;
+          will-change: transform;
         }
 
         @keyframes blinkCursor {
@@ -477,116 +455,98 @@ export default function Home() {
 
         {/* ================= CODE CARD ================= */}
 
-        <div
-          className="hero-card-entrance w-full max-w-[510px]"
-          style={{ perspective: '900px' }}
-        >
-          <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={replay}
-            role="button"
-            title="Click to replay"
-            style={{
-              transform: `
-                rotateX(${tilt.y * -7}deg)
-                rotateY(${tilt.x * 7}deg)
-                scale(${tilt.x || tilt.y ? 1.015 : 1})
-              `,
-              boxShadow: `
-                0 0 ${glowSpread}px
-                rgba(34,229,255,${glowOpacity}),
-                inset 0 0 40px rgba(0,200,255,.05)
-              `,
-              transition:
-                'transform .25s ease-out, box-shadow .3s ease-out',
-            }}
-            className="relative cursor-pointer select-none overflow-hidden rounded-xl border border-cyan-300/40 bg-[#020609]/95 p-4 font-mono backdrop-blur-md sm:p-6"
-          >
-
-            {/* top glow */}
-
-            <div className="absolute left-[10%] right-[10%] top-0 h-px bg-gradient-to-r from-transparent via-cyan-300 to-transparent opacity-100" />
-
-            {/* subtle corner accents */}
-
-            <div className="absolute right-0 top-0 h-16 w-16 border-r border-t border-cyan-300/35" />
-
-            <div className="absolute bottom-0 left-0 h-16 w-16 border-b border-l border-emerald-400/35" />
-
-            {/* window buttons */}
-
-            <div className="mb-5 flex items-center gap-2">
-
-              <span className="h-4 w-4 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,.6)]" />
-
-              <span className="h-4 w-4 rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,.6)]" />
-
-              <span className="h-4 w-4 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,.6)]" />
-
-              <span className="ml-auto text-[10px] tracking-widest text-white/25">
-                ENGINEER.PY
-              </span>
-
-            </div>
-
-            {/* ================= CODE ================= */}
-
-            <pre className="h-[13rem] overflow-hidden whitespace-pre-wrap text-[13px] leading-7 text-white/70 sm:h-[15rem] sm:text-[16px] sm:leading-8 sm:text-base">
-              {typed.map((l, i) => (
-                <div key={i}>
-                  <span
-                    className={
-                      i === 0
-                        ? 'text-cyan-300'
-                        : i === 1
-                          ? 'text-emerald-300'
-                          : 'text-white/70'
-                    }
-                  >
-                    {l}
-                  </span>
-                </div>
-              ))}
-
-              {!codeDone && (
-                <span className="cursor-blink text-cyan-300">
-                  ▍
-                </span>
-              )}
-            </pre>
-
-            {/* ================= TERMINAL OUTPUT ================= */}
-
+        <div className="hero-card-entrance w-full max-w-[510px]">
+          {/* Only the automatic up/down float — no hover tilt. */}
+          <div className="hero-card-float">
             <div
-              className={`mt-3 border-t border-white/10 pt-4 transition-opacity duration-300 ${
-                codeDone ? 'opacity-100' : 'opacity-0'
-              }`}
+              onClick={replay}
+              role="button"
+              title="Click to replay"
+              className="relative cursor-pointer select-none overflow-hidden rounded-xl border border-cyan-300/40 bg-[#020609]/95 p-4 font-mono shadow-[0_0_40px_rgba(34,229,255,.22),inset_0_0_40px_rgba(0,200,255,.05)] backdrop-blur-md sm:p-6"
             >
-              <pre className="h-[8.4rem] overflow-hidden whitespace-pre-wrap text-[13px] leading-7 text-emerald-300 sm:h-[9.8rem] sm:text-[16px] sm:leading-8 sm:text-base">
-                {output.map((l, i) => (
-                  <div
-                    key={i}
-                    className={
-                      i === 0
-                        ? 'text-cyan-300'
-                        : 'text-emerald-300'
-                    }
-                  >
-                    {l}
+
+              {/* top glow */}
+
+              <div className="absolute left-[10%] right-[10%] top-0 h-px bg-gradient-to-r from-transparent via-cyan-300 to-transparent opacity-100" />
+
+              {/* subtle corner accents */}
+
+              <div className="absolute right-0 top-0 h-16 w-16 border-r border-t border-cyan-300/35" />
+
+              <div className="absolute bottom-0 left-0 h-16 w-16 border-b border-l border-emerald-400/35" />
+
+              {/* window buttons */}
+
+              <div className="mb-5 flex items-center gap-2">
+
+                <span className="h-4 w-4 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,.6)]" />
+
+                <span className="h-4 w-4 rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,.6)]" />
+
+                <span className="h-4 w-4 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,.6)]" />
+
+                <span className="ml-auto text-[10px] tracking-widest text-white/25">
+                  ENGINEER.PY
+                </span>
+
+              </div>
+
+              {/* ================= CODE ================= */}
+
+              <pre className="h-[13rem] overflow-hidden whitespace-pre-wrap text-[13px] leading-7 text-white/70 sm:h-[15rem] sm:text-[16px] sm:leading-8 sm:text-base">
+                {typed.map((l, i) => (
+                  <div key={i}>
+                    <span
+                      className={
+                        i === 0
+                          ? 'text-cyan-300'
+                          : i === 1
+                            ? 'text-emerald-300'
+                            : 'text-white/70'
+                      }
+                    >
+                      {l}
+                    </span>
                   </div>
                 ))}
 
-                {codeDone && (
+                {!codeDone && (
                   <span className="cursor-blink text-cyan-300">
                     ▍
                   </span>
                 )}
               </pre>
-            </div>
 
+              {/* ================= TERMINAL OUTPUT ================= */}
+
+              <div
+                className={`mt-3 border-t border-white/10 pt-4 transition-opacity duration-300 ${
+                  codeDone ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <pre className="h-[8.4rem] overflow-hidden whitespace-pre-wrap text-[13px] leading-7 text-emerald-300 sm:h-[9.8rem] sm:text-[16px] sm:leading-8 sm:text-base">
+                  {output.map((l, i) => (
+                    <div
+                      key={i}
+                      className={
+                        i === 0
+                          ? 'text-cyan-300'
+                          : 'text-emerald-300'
+                      }
+                    >
+                      {l}
+                    </div>
+                  ))}
+
+                  {codeDone && (
+                    <span className="cursor-blink text-cyan-300">
+                      ▍
+                    </span>
+                  )}
+                </pre>
+              </div>
+
+            </div>
           </div>
         </div>
 
