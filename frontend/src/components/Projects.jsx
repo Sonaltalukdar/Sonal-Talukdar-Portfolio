@@ -46,7 +46,7 @@ function ProjectCard({ p }) {
         {/* picture slot — full image shown, no cropping, image itself does not scale */}
         <div className="w-full overflow-hidden bg-white/[0.02]">
           <img
-            src="/AtmosAI.png"
+            src={p.image}
             alt={p.title}
             className="h-auto w-full object-contain"
           />
@@ -154,7 +154,7 @@ export default function Projects() {
         Projects
       </h2>
 
-      <div className="mt-10 flex justify-center sm:mt-14">
+      <div className="mt-10 flex flex-wrap justify-center gap-8 sm:mt-14">
         {projects.map((p) => (
           <ProjectCard key={p.title} p={p} />
         ))}

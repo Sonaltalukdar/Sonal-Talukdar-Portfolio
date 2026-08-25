@@ -6,7 +6,7 @@ export const profile = {
   phone: '9330375596',
   linkedin: 'https://www.linkedin.com/in/sonal-talukdar-b0b998391/',
   github: 'https://github.com/Sonaltalukdar',
-  site: 'https://sonaltalukdar.netlify.app',
+  site: 'https://sonal-talukdar-portfolio-frontend.onrender.com/',
   about:
     'Enthusiastic B.Tech CSE student building full-stack, AI-integrated web apps with the MERN stack. Comfortable across React, Node.js, Express, MongoDB and Python, with a growing focus on shipping AI-powered features and secure, scalable products.',
 }
@@ -23,6 +23,7 @@ export const projects = [
   {
     title: 'AtmosAI',
     subtitle: 'AI-Powered Weather Forecasting Platform',
+    image: '/AtmosAI.png',
     tech: ['React.js', 'Tailwind CSS', 'Vite', 'Node.js', 'Express.js', 'MongoDB Atlas', 'Groq (LLaMA 3.3 70B)'],
     points: [
       'Full-stack MERN weather platform with real-time forecasts, AQI and interactive maps',
@@ -32,6 +33,20 @@ export const projects = [
     ],
     github: 'https://github.com/Sonaltalukdar/AtmosAI',
     live: 'https://atmosai-frontend.onrender.com/home',
+  },
+  {
+    title: 'Portfolio Website',
+    subtitle: 'Personal Portfolio with AI Chat Assistant',
+    image: '/Portfolio.png',
+    tech: ['React.js', 'Tailwind CSS', 'Vite', 'Python (FastAPI)', 'MongoDB Atlas', 'Groq (LLaMA)'],
+    points: [
+      'Full-stack portfolio site with animated, glitch-styled UI and section-based layout',
+      'AI chat assistant that answers visitor questions using Groq-powered LLM',
+      'Feedback form with AI-generated thank-you replies, stored in MongoDB',
+      'Deployed as separate frontend and backend services on Render',
+    ],
+    github: 'https://github.com/Sonaltalukdar/Sonal-Talukdar-Portfolio',
+    live: 'https://sonal-talukdar-portfolio-frontend.onrender.com/',
   },
 ]
 
