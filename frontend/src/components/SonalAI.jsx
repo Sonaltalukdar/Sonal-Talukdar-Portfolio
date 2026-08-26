@@ -143,7 +143,7 @@ export default function SonalAI() {
                 </p>
                 <span className="mt-0.5 flex items-center gap-1.5 text-[11px] text-white/40">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-                  Online now
+                  Online
                 </span>
               </div>
             </div>
