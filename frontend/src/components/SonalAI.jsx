@@ -164,7 +164,7 @@ export default function SonalAI() {
                     </div>
                   )}
                   <div
-                    className={`max-w-[78%] rounded-2xl px-4 py-2.5 leading-relaxed ${
+                    className={`max-w-[78%] break-words whitespace-pre-wrap rounded-2xl px-4 py-2.5 leading-relaxed ${
                       m.role === 'user'
                         ? 'rounded-br-md text-white'
                         : 'rounded-bl-md border border-white/10 bg-white/[0.04] text-white/80'
