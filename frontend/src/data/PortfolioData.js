@@ -3,7 +3,6 @@ export const profile = {
   title: 'Aspiring AI Full Stack Engineer',
   location: 'Hooghly, West Bengal',
   email: 'sonaltalukdar29@gmail.com',
-  phone: '9330375596',
   linkedin: 'https://www.linkedin.com/in/sonal-talukdar-b0b998391/',
   github: 'https://github.com/Sonaltalukdar',
   site: 'https://sonal-talukdar-portfolio-frontend.onrender.com/',
