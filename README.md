@@ -1,8 +1,7 @@
 # 🌐 Sonal Talukdar — Portfolio
 
 Personal portfolio website featuring an integrated chat assistant that speaks in first person as
-Sonal, answering visitor questions about projects, education, and skills using grounded, factual
-data (no hallucinations).
+Sonal, answering visitor questions about projects, education, and skills.
 
 ---
 
