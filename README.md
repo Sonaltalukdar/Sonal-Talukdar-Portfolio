@@ -4,12 +4,6 @@ Personal portfolio website featuring an integrated chat assistant that speaks in
 Sonal, answering visitor questions about projects, education, and skills using grounded, factual
 data (no hallucinations).
 
-🔗 **Live Site:**
-[sonal-talukdar-portfolio-frontend.onrender.com](https://sonal-talukdar-portfolio-frontend.onrender.com)
-
-⚙️ **Backend API:**
-[sonal-talukdar-portfolio-backend.onrender.com](https://sonal-talukdar-portfolio-backend.onrender.com)
-
 ---
 
 ## ✨ Features
