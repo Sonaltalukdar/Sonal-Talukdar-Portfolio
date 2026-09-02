@@ -3,8 +3,6 @@
 Personal portfolio website featuring an integrated chat assistant that speaks in first person as
 Sonal, answering visitor questions about projects, education, and skills.
 
-🌐 Live Website: https://sonal-talukdar-portfolio-frontend.onrender.com/
-
 ---
 
 ## ✨ Features
