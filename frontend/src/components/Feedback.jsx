@@ -214,7 +214,7 @@ export default function Feedback() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="cut-field name-field-border p-[1.5px] transition-colors duration-300">
                 <div className="cut-field relative flex items-center gap-3 bg-[#0a0e17]/90 px-4 py-3 backdrop-blur-md">
-                  <FiUser className="shrink-0 text-cyan-300/70" size={18} />
+                  <FiUser className="shrink-0 text-cyan-300" strokeWidth={2.5} size={18} />
                   <input
                     required
                     name="name"
@@ -227,7 +227,7 @@ export default function Feedback() {
               </div>
               <div className="cut-field bg-blue-400/50 p-[1.5px] transition-colors duration-300 focus-within:bg-blue-400/90">
                 <div className="cut-field relative flex items-center gap-3 bg-[#0a0e17]/90 px-4 py-3 backdrop-blur-md">
-                  <FiMail className="shrink-0 text-blue-300/70" size={18} />
+                  <FiMail className="shrink-0 text-blue-300" strokeWidth={2.5} size={18} />
                   <input
                     required
                     type="email"
@@ -243,7 +243,7 @@ export default function Feedback() {
 
             <div className="cut-field bg-emerald-400/50 p-[1.5px] transition-colors duration-300 focus-within:bg-emerald-400/90">
               <div className="cut-field relative flex gap-3 bg-[#0a0e17]/90 px-4 py-3 backdrop-blur-md">
-                <FiMessageSquare className="mt-0.5 shrink-0 text-emerald-300/70" size={18} />
+                <FiMessageSquare className="mt-0.5 shrink-0 text-emerald-300" strokeWidth={2.5} size={18} />
                 <textarea
                   required
                   name="message"
