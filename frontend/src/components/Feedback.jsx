@@ -227,7 +227,7 @@ export default function Feedback() {
               </div>
               <div className="cut-field bg-blue-400/50 p-[1.5px] transition-colors duration-300 focus-within:bg-blue-400/90">
                 <div className="cut-field relative flex items-center gap-3 bg-[#0a0e17]/90 px-4 py-3 backdrop-blur-md">
-                  <FiMail className="shrink-0 text-blue-300" strokeWidth={2.5} size={18} />
+                  <FiMail className="shrink-0" strokeWidth={3} size={19} style={{ color: '#60a5fa' }} />
                   <input
                     required
                     type="email"
