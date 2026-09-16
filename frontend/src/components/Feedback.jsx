@@ -214,7 +214,7 @@ export default function Feedback() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="cut-field name-field-border p-[1.5px] transition-colors duration-300">
                 <div className="cut-field relative flex items-center gap-3 bg-[#0a0e17]/90 px-4 py-3 backdrop-blur-md">
-                  <FiUser className="shrink-0 text-cyan-300" strokeWidth={2.5} size={18} />
+                  <FiUser className="shrink-0" strokeWidth={2.5} size={18} style={{ color: '#22e5ff' }} />
                   <input
                     required
                     name="name"
