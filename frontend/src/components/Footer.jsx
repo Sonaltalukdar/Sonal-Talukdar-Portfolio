@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-5">
+        <div className="mt-10 border-t border-white/10 pt-5 text-center">
           <p className="text-sm text-muted">
             © {new Date().getFullYear()} {profile.name}. All rights reserved.
           </p>
