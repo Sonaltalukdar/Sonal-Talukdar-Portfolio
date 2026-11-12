@@ -65,7 +65,7 @@ export const education = [
     degree: 'Secondary Education',
     school: 'G.D. Birla Centre For Education · ICSE',
     period: '2021',
-    note: '79.5%',
+    note: '79.4%',
   },
 ]
 
