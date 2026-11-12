@@ -114,25 +114,25 @@ export default function Navbar() {
                   hidden: { opacity: 0 },
                   show: { opacity: 1, transition: { duration: 0.6, ease: 'easeOut' } },
                 }}
-                className="group relative block overflow-hidden text-base leading-none"
-                style={{ height: '1.2em', lineHeight: '1.2em' }}
+                className="group relative block overflow-hidden text-base leading-none hover:[filter:drop-shadow(0_0_6px_rgba(34,229,255,0.7))]"
+                style={{
+                  height: '1.2em',
+                  lineHeight: '1.2em',
+                  // glow is applied on the link itself via filter (not textShadow on
+                  // the inner spans), so it shows outside the clip without a box
+                  filter: isActive
+                    ? 'drop-shadow(0 0 6px rgba(34,229,255,0.7))'
+                    : undefined,
+                }}
               >
                 <span
                   className={`block transition-transform duration-400 ease-out group-hover:-translate-y-full ${
                     isActive ? 'text-cyan-300' : 'text-white/65'
                   }`}
-                  style={
-                    isActive
-                      ? { textShadow: '0 0 10px rgba(34,229,255,0.7)' }
-                      : undefined
-                  }
                 >
                   {l.label}
                 </span>
-                <span
-                  className="absolute left-0 top-0 block translate-y-full text-cyan-300 transition-transform duration-400 ease-out group-hover:translate-y-0"
-                  style={{ textShadow: '0 0 10px rgba(34,229,255,0.7)' }}
-                >
+                <span className="absolute left-0 top-0 block translate-y-full text-cyan-300 transition-transform duration-400 ease-out group-hover:translate-y-0">
                   {l.label}
                 </span>
                 {isActive && (
